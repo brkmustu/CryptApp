@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: traefik/Dockerfile
+    depends_on:
+        - auth.service
+        - crypt.service
+        - redis
+
+  auth.service:
+    image: ${DOCKER_REGISTRY-}authservice
+    build:
+      context: .
+      dockerfile: backend/services/Auth.Service/Dockerfile
+    depends_on:
+        - redis
+
+  crypt.service:
+    image: ${DOCKER_REGISTRY-}cryptservice
+    build:
+      context: .
+      dockerfile: backend/services/Crypt.Service/Dockerfile
+
+  auth.eventprocessor:
+    image: ${DOCKER_REGISTRY-}autheventprocessor
+    build:
+      context: .
+      dockerfile: backend/modules/auth/Auth.EventProcessor/Dockerfile
+
+  crypt.eventprocessor:
+    image: ${DOCKER_REGISTRY-}crypteventprocessor
+    build:
+      context: .
+      dockerfile: backend/modules/crypt/Crypt.EventProcessor/Dockerfile
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: ${DOCKER_REGISTRY-}redis

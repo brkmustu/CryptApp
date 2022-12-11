@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  gateway:
+    ports:
+      - "9000:80"
+      - "9090:8080"
+
+  auth.service:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    expose:
+      - "80"
+      - "5000"
+
+  crypt.service:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    expose:
+      - "80"
+
+  auth.eventprocessor:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    expose:
+      - "80"
+
+  crypt.eventprocessor:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    expose:
+      - "80"
+
+  redis:
+    expose:
+      - "6379"
+    ports:
+      - "8001:8001"
+    volumes:
+        - vol_redis_data:/data
+
+volumes:
+  vol_redis_data:

@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Service", "backend\services\Auth.Service\Auth.Service.csproj", "{781FFD05-E22F-49DC-9E7A-5F893844E8EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{B8F87F0E-606F-4E6F-8938-BA94DF4AA359}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{8AC57DD0-6993-4AC8-82FD-6C22AFA6D512}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypt.Service", "backend\services\Crypt.Service\Crypt.Service.csproj", "{19B6FA22-F62A-4EED-B342-E7E7D4311A87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{6AB00DBA-43A5-4A9F-8803-E407488CC28C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth", "auth", "{97D989B8-A7FD-4A10-8F20-D232197DC745}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{4FD3114F-0297-4B0B-AFBE-2D2B77D944F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "crypt", "crypt", "{C4B6A849-7A7E-4F1E-96D6-4184B0554A54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Application", "backend\modules\auth\Auth.Application\Auth.Application.csproj", "{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.EventProcessor", "backend\modules\auth\Auth.EventProcessor\Auth.EventProcessor.csproj", "{3EAB595B-22F1-4484-889C-E01013454C19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared", "backend\modules\core\Core.Shared\Core.Shared.csproj", "{550F124B-9F3E-4A93-8DBF-C505F7B921D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypt.Application", "backend\modules\crypt\Crypt.Application\Crypt.Application.csproj", "{5F685768-56A6-48BA-B98D-D754ED17BE7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypt.EventProcessor", "backend\modules\crypt\Crypt.EventProcessor\Crypt.EventProcessor.csproj", "{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "traefik", "traefik", "{97B33D24-8814-413A-9137-19B38CC575CC}"
+	ProjectSection(SolutionItems) = preProject
+		traefik\Dockerfile = traefik\Dockerfile
+		traefik\dynamic.yml = traefik\dynamic.yml
+		traefik\traefik.yml = traefik\traefik.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{83EC76D6-6A9F-4A92-B8F6-021AF73352F1}"
+	ProjectSection(SolutionItems) = preProject
+		up-re-create.ps1 = up-re-create.ps1
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C2C611B6-56F9-44BC-B650-8307EAE34BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Web", "backend\modules\core\Core.Web\Core.Web.csproj", "{D9220808-D17D-427B-9535-09193218868B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{781FFD05-E22F-49DC-9E7A-5F893844E8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{781FFD05-E22F-49DC-9E7A-5F893844E8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{781FFD05-E22F-49DC-9E7A-5F893844E8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{781FFD05-E22F-49DC-9E7A-5F893844E8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19B6FA22-F62A-4EED-B342-E7E7D4311A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19B6FA22-F62A-4EED-B342-E7E7D4311A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19B6FA22-F62A-4EED-B342-E7E7D4311A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19B6FA22-F62A-4EED-B342-E7E7D4311A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EAB595B-22F1-4484-889C-E01013454C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EAB595B-22F1-4484-889C-E01013454C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EAB595B-22F1-4484-889C-E01013454C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EAB595B-22F1-4484-889C-E01013454C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{550F124B-9F3E-4A93-8DBF-C505F7B921D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{550F124B-9F3E-4A93-8DBF-C505F7B921D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{550F124B-9F3E-4A93-8DBF-C505F7B921D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{550F124B-9F3E-4A93-8DBF-C505F7B921D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F685768-56A6-48BA-B98D-D754ED17BE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F685768-56A6-48BA-B98D-D754ED17BE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F685768-56A6-48BA-B98D-D754ED17BE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F685768-56A6-48BA-B98D-D754ED17BE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2C611B6-56F9-44BC-B650-8307EAE34BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2C611B6-56F9-44BC-B650-8307EAE34BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2C611B6-56F9-44BC-B650-8307EAE34BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2C611B6-56F9-44BC-B650-8307EAE34BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9220808-D17D-427B-9535-09193218868B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9220808-D17D-427B-9535-09193218868B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9220808-D17D-427B-9535-09193218868B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9220808-D17D-427B-9535-09193218868B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{781FFD05-E22F-49DC-9E7A-5F893844E8EA} = {8AC57DD0-6993-4AC8-82FD-6C22AFA6D512}
+		{8AC57DD0-6993-4AC8-82FD-6C22AFA6D512} = {B8F87F0E-606F-4E6F-8938-BA94DF4AA359}
+		{19B6FA22-F62A-4EED-B342-E7E7D4311A87} = {8AC57DD0-6993-4AC8-82FD-6C22AFA6D512}
+		{6AB00DBA-43A5-4A9F-8803-E407488CC28C} = {B8F87F0E-606F-4E6F-8938-BA94DF4AA359}
+		{97D989B8-A7FD-4A10-8F20-D232197DC745} = {6AB00DBA-43A5-4A9F-8803-E407488CC28C}
+		{4FD3114F-0297-4B0B-AFBE-2D2B77D944F9} = {6AB00DBA-43A5-4A9F-8803-E407488CC28C}
+		{C4B6A849-7A7E-4F1E-96D6-4184B0554A54} = {6AB00DBA-43A5-4A9F-8803-E407488CC28C}
+		{17D9F4E1-8E1A-4E3D-9F47-0A0DF066CC22} = {97D989B8-A7FD-4A10-8F20-D232197DC745}
+		{3EAB595B-22F1-4484-889C-E01013454C19} = {97D989B8-A7FD-4A10-8F20-D232197DC745}
+		{550F124B-9F3E-4A93-8DBF-C505F7B921D8} = {4FD3114F-0297-4B0B-AFBE-2D2B77D944F9}
+		{5F685768-56A6-48BA-B98D-D754ED17BE7E} = {C4B6A849-7A7E-4F1E-96D6-4184B0554A54}
+		{4D836A27-E96D-423E-AA1E-A1CB8D3DC1D1} = {C4B6A849-7A7E-4F1E-96D6-4184B0554A54}
+		{D9220808-D17D-427B-9535-09193218868B} = {4FD3114F-0297-4B0B-AFBE-2D2B77D944F9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {004A282E-3449-4E9D-B088-7649368FF50E}
+	EndGlobalSection
+EndGlobal

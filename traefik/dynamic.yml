@@ -1,0 +1,21 @@
+http:
+  routers:
+    auth.service:
+      rule: "PathPrefix(`/api/auth`)"
+      service: auth.service
+    crypt.service:
+      rule: "PathPrefix(`/api/crypt`)"
+      service: crypt.service
+  middlewares:
+    dummy_auth:
+      forwardAuth:
+        address: "http://middleware-auth-dummy"
+  services:
+    auth.service:
+      loadBalancer:
+        servers:
+        - url: http://auth.service
+    crypt.service:
+      loadBalancer:
+        servers:
+        - url: http://crypt.service
