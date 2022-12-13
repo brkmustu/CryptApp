@@ -1,4 +1,5 @@
 using Auth;
+using JwtValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,8 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
         .AddEnvironmentVariables();
 });
 
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddAuthApp();
+builder.Services.AddServices();
+builder.Services.Configure<TokenOptions>(builder.Configuration.GetSection(TokenOptions.SectionName));
 
 var app = builder.Build();
 

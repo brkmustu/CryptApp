@@ -6,16 +6,21 @@ http:
     crypt.service:
       rule: "PathPrefix(`/api/crypt`)"
       service: crypt.service
+      middlewares:
+        - "middleware-jwt.val"
+    web:
+      rule: "PathPrefix(`/`)"
+      service: web
   middlewares:
-    dummy_auth:
+    middleware-jwt.val:
       forwardAuth:
-        address: "http://middleware-auth-dummy"
+        address: "http://middleware-jwt.val"
   services:
-    auth.service:
-      loadBalancer:
-        servers:
-        - url: http://auth.service
     crypt.service:
       loadBalancer:
         servers:
-        - url: http://crypt.service
+          - url: http://crypt.service
+    web:
+      loadBalancer:
+        servers:
+          - url: http://web

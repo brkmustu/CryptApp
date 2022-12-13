@@ -1,6 +1,5 @@
-﻿using Core.Shared.Extensions.RabbitMqExtensions;
-using Core.Shared.Extensions;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Core.Shared.RabbitMq;
 
 namespace Core.Shared;
 

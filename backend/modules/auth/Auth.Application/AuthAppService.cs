@@ -16,15 +16,14 @@ public class AuthAppService : IAuthAppService
 
     public async Task<Result<TokenResult>> SignInAsync(SignInRequestDto request)
     {
+        _redis.GetDatabase();
+        //var applications = await _redis.GetCollectionAsync<ApplicationIdentifier>(CollectionNames.Applications);
+
+
+
         return Result.Success(new TokenResult
         {
             Token = ""
         });
-    }
-
-    public Task<Result<bool>> ValidateAsync(string token)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        throw new NotImplementedException();
     }
 }

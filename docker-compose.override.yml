@@ -6,20 +6,24 @@ services:
       - "9000:80"
       - "9090:8080"
 
+  web:
+    expose:
+      - "8080"
+
   auth.service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - CommonSettings__RedisServiceName=redis:6379
     expose:
       - "80"
       - "5000"
 
-  crypt.service:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+  middleware-jwt.val:
     expose:
       - "80"
+      - "5050"
 
-  auth.eventprocessor:
+  crypt.service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     expose:
