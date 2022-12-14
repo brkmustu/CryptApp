@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using StackExchange.Redis;
 
-namespace Caching.Distributed;
+namespace Caching;
 
 public class CachingService : ICachingService
 {

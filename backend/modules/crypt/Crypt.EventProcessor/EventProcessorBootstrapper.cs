@@ -1,18 +1,16 @@
-﻿using Crypt.Application.Consumers;
-using MassTransit;
+﻿using Crypt.EventProcessor.Consumers;
+using Messaging;
 
 namespace Crypt.EventProcessor;
 
 public static class EventProcessorBootstrapper
 {
-    public static IServiceCollection AddEventProcessorApp(this IServiceCollection services)
+    public static IServiceCollection AddEventProcessorApp(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddMassTransit(c =>
+        services.AddMqConsumerSide(configuration, c =>
         {
-            c.AddConsumer<DencryptConsumer>();
+            c.AddConsumer<DecryptConsumer>();
             c.AddConsumer<EncryptConsumer>();
-
-            c.UsingRabbitMq((context, cfg) => cfg.ConfigureEndpoints(context));
         });
 
         return services;

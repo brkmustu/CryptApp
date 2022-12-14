@@ -1,20 +1,24 @@
-﻿using MessageQueue.Shared.RabbitMq;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
-namespace MessageQueue.Shared;
+namespace Core.Shared.RabbitMq;
 
-public static class MessageQueueSettings
+public class RabbitMqOptions
 {
-    public static RabbitMqOptions GetRabbitMqSettings(IConfiguration configuration)
+    public const string SectionName = "RabbitMqOptions";
+    public string HostName { get; set; }
+    public string VirtualHost { get; set; }
+    public string UserName { get; set; }
+    public string Password { get; set; }
+
+    public static RabbitMqOptions GetOptions(IConfiguration configuration)
     {
-        var appSettingsSection = configuration.GetSection(RabbitMqOptions.SectionName);
+        var appSettingsSection = configuration.GetSection(SectionName);
         var options = appSettingsSection.Get<RabbitMqOptions>();
 
         var hostName = Environment.GetEnvironmentVariable("RabbitMqOptions__HostName");
         var virtualHost = Environment.GetEnvironmentVariable("RabbitMqOptions__VirtualHost");
         var userName = Environment.GetEnvironmentVariable("RabbitMqOptions__UserName");
         var password = Environment.GetEnvironmentVariable("RabbitMqOptions__Password");
-        var queueName = Environment.GetEnvironmentVariable("RabbitMqOptions__QueueName");
 
         if (!string.IsNullOrEmpty(hostName))
         {
@@ -32,11 +36,16 @@ public static class MessageQueueSettings
         {
             options.Password = password;
         }
-        if (!string.IsNullOrEmpty(queueName))
-        {
-            options.QueueName = queueName;
-        }
 
         return options;
+    }
+
+    public static class Queues
+    {
+        public static class Crypt
+        {
+            public const string Encrypt = "ca.crypt.encrypt";
+            public const string Decrypt = "ca.crypt.decrypt";
+        }
     }
 }

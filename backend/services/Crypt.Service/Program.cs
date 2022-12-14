@@ -1,6 +1,3 @@
-using Crypt.Application;
-using MessageQueue.RabbitMq;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
@@ -10,8 +7,7 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
         .AddEnvironmentVariables();
 });
 
-builder.Services.AddCryptApp(builder.Configuration)
-    .RegisterEventBusServices();
+builder.Services.AddCryptServices(builder.Configuration);
 
 var app = builder.Build();
 

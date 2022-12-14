@@ -1,4 +1,4 @@
-﻿namespace Caching.Distributed;
+﻿namespace Caching;
 
 public interface ICachingService
 {

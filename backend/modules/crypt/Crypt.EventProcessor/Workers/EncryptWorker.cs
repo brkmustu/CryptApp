@@ -1,4 +1,5 @@
-﻿using Crypt.Application.Consumers;
+﻿using Core.Shared.RabbitMq;
+using Crypt.EventProcessor.Consumers;
 using MassTransit;
 
 namespace Crypt.EventProcessor.Workers;
@@ -22,7 +23,7 @@ public class EncryptWorker : BackgroundService
         {
             _logger.LogInformation("EncryptWorker started");
 
-            var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint("DWHProductQueue", x =>
+            var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint(RabbitMqConsts.Crypt_Encrypt_QueueName, x =>
             {
                 x.Consumer<EncryptConsumer>(_serviceProvider);
             });

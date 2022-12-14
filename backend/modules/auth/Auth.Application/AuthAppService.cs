@@ -1,5 +1,5 @@
 ﻿using Auth.Application.Contracts;
-using Caching.Distributed;
+using Caching;
 using Core.Shared.Application;
 using Core.Shared.Caching;
 using Core.Shared.Security;

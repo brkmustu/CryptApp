@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 
-namespace Caching.Distributed;
+namespace Caching;
 
 public static class DependencyInjection
 {

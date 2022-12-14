@@ -1,15 +1,12 @@
-﻿using MessageQueue.RabbitMq;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Crypt.Application;
 
 public static class CryptAppBootstrapper
 {
-    public static IServiceCollection AddCryptApp(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddCryptApp(this IServiceCollection services)
     {
         services.AddTransient<ICryptAppService, CryptAppService>();
-        services.RegisterQueueServices(configuration);
 
         return services;
     }

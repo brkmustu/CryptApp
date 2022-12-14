@@ -2,9 +2,8 @@
 using Crypt.Application.Contracts;
 using Crypt.Events;
 using MassTransit;
-using Microsoft.Extensions.Logging;
 
-namespace Crypt.Application.Consumers;
+namespace Crypt.EventProcessor.Consumers;
 
 public class EncryptConsumer : IConsumer<EncryptEvent>
 {

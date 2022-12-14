@@ -9,6 +9,7 @@ public static class RegisterApis
 
         app.MapPost("/api/auth/signin", async (SignInRequestDto request, IAuthAppService service) => await service.SignInAsync(request));
 
+        /// uygulama ilk ayağa kalktığında, eğer redis içinde yoksa aşağıdaki apikey ve şifre ile örnek bir kayıt oluşturulur.
         app.Lifetime.ApplicationStarted.Register(() =>
         {
             using (var scope = app.Services.CreateScope())

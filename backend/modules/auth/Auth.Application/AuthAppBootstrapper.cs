@@ -1,5 +1,5 @@
 ﻿using Auth.Application;
-using Caching.Distributed;
+using Caching;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
