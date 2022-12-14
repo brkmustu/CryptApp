@@ -1,9 +1,12 @@
 ﻿using Core.Shared.Application;
+using Crypt.Application.Contracts;
 
 namespace Crypt.Application;
 
 public interface ICryptAppService
 {
-    Task<Result> SubscribeEncryptAsync(string context);
-    Task<Result> SubscribeDecryptAsync(string context);
+    Task<Result> SubscribeEncryptAsync(CryptDto context);
+    Task<Result> SubscribeDecryptAsync(CryptDto context);
+    Task<Result<CryptDto>> EncryptAsync(CryptDto context);
+    Task<Result<CryptDto>> DecryptAsync(CryptDto context);
 }

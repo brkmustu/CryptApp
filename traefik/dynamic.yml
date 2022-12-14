@@ -1,21 +1,30 @@
 http:
   routers:
-    auth.service:
-      rule: "PathPrefix(`/api/auth`)"
-      service: auth.service
     crypt.service:
       rule: "PathPrefix(`/api/crypt`)"
       service: crypt.service
-  middlewares:
-    dummy_auth:
-      forwardAuth:
-        address: "http://middleware-auth-dummy"
-  services:
+      middlewares:
+        - "middleware-jwt.val"
     auth.service:
-      loadBalancer:
-        servers:
-        - url: http://auth.service
+      rule: "PathPrefix(`/api/auth`)"
+      service: auth.service
+    client.app:
+      rule: "PathPrefix(`/`)"
+      service: client.app
+  middlewares:
+    middleware-jwt.val:
+      forwardAuth:
+        address: "http://middleware-jwt.val"
+  services:
     crypt.service:
       loadBalancer:
         servers:
-        - url: http://crypt.service
+          - url: http://crypt.service
+    auth.service:
+      loadBalancer:
+        servers:
+          - url: http://auth.service
+    client.app:
+      loadBalancer:
+        servers:
+          - url: http://client.app

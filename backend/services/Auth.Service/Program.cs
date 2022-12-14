@@ -2,7 +2,15 @@ using Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthApp();
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+        .AddJsonFile("appsettings.json")
+        .AddEnvironmentVariables();
+});
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthApp(builder.Configuration);
 
 var app = builder.Build();
 

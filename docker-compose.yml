@@ -10,6 +10,11 @@ services:
         - crypt.service
         - redis
 
+  client.app:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+
   auth.service:
     image: ${DOCKER_REGISTRY-}authservice
     build:
@@ -18,17 +23,18 @@ services:
     depends_on:
         - redis
 
+  middleware-jwt.val:
+    build:
+      context: .
+      dockerfile: backend/middlewares/JwtValidation/Dockerfile
+    depends_on:
+        - redis
+
   crypt.service:
     image: ${DOCKER_REGISTRY-}cryptservice
     build:
       context: .
       dockerfile: backend/services/Crypt.Service/Dockerfile
-
-  auth.eventprocessor:
-    image: ${DOCKER_REGISTRY-}autheventprocessor
-    build:
-      context: .
-      dockerfile: backend/modules/auth/Auth.EventProcessor/Dockerfile
 
   crypt.eventprocessor:
     image: ${DOCKER_REGISTRY-}crypteventprocessor
@@ -39,3 +45,7 @@ services:
   redis:
     image: redis/redis-stack:latest
     container_name: ${DOCKER_REGISTRY-}redis
+
+  rabbitmq:
+    image: rabbitmq:3.11.4-management-alpine
+    container_name: ${DOCKER_REGISTRY-}rabbitmq
