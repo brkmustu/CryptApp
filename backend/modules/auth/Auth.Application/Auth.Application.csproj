@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\caching\Caching.Distributed\Caching.Distributed.csproj" />
+    <ProjectReference Include="..\..\core\Core.Shared\Core.Shared.csproj" />
     <ProjectReference Include="..\Auth.Domain\Auth.Domain.csproj" />
   </ItemGroup>
 

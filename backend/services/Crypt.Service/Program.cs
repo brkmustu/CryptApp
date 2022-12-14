@@ -1,3 +1,5 @@
+using Crypt.Application;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
@@ -6,6 +8,8 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
         .AddJsonFile("appsettings.json")
         .AddEnvironmentVariables();
 });
+
+builder.Services.AddCryptApp(builder.Configuration);
 
 var app = builder.Build();
 

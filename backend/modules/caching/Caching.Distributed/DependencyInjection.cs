@@ -13,6 +13,7 @@ public static class DependencyInjection
         });
 
         services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+        services.AddSingleton<ICachingService, CachingService>();
 
         return services;
     }

@@ -5,5 +5,6 @@ namespace Auth.Application;
 
 public interface IAuthAppService
 {
+    Task<Result<ApplicationIdentifier>> RegisterAsync(RegisterRequestDto request);
     Task<Result<TokenResult>> SignInAsync(SignInRequestDto request);
 }

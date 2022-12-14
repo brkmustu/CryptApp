@@ -1,16 +1,16 @@
 ﻿using Core.Shared.Application;
+using Crypt.Application.Contracts;
 
 namespace Crypt.Application;
 
 public class CryptAppService : ICryptAppService
 {
-
-    public Task<Result> SubscribeDecryptAsync(string context)
+    public Task<Result> SubscribeDecryptAsync(CryptDto context)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result> SubscribeEncryptAsync(string context)
+    public Task<Result> SubscribeEncryptAsync(CryptDto context)
     {
         throw new NotImplementedException();
     }

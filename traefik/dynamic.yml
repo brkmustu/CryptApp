@@ -1,16 +1,16 @@
 http:
   routers:
-    auth.service:
-      rule: "PathPrefix(`/api/auth`)"
-      service: auth.service
     crypt.service:
       rule: "PathPrefix(`/api/crypt`)"
       service: crypt.service
       middlewares:
         - "middleware-jwt.val"
-    web:
+    auth.service:
+      rule: "PathPrefix(`/api/auth`)"
+      service: auth.service
+    client.app:
       rule: "PathPrefix(`/`)"
-      service: web
+      service: client.app
   middlewares:
     middleware-jwt.val:
       forwardAuth:
@@ -20,7 +20,11 @@ http:
       loadBalancer:
         servers:
           - url: http://crypt.service
-    web:
+    auth.service:
       loadBalancer:
         servers:
-          - url: http://web
+          - url: http://auth.service
+    client.app:
+      loadBalancer:
+        servers:
+          - url: http://client.app

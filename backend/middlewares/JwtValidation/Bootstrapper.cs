@@ -47,7 +47,7 @@ public static class Bootstrapper
                     var jwtToken = (JwtSecurityToken)validatedToken;
                     var appId = jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
 
-
+                    return appId;
                 }
                 catch
                 {
@@ -55,8 +55,11 @@ public static class Bootstrapper
                     return "Geçersiz token.";
                 }
             }
-            accessor.HttpContext.Response.StatusCode = 401;
-            return "Yetkiniz olmadığı için işlem gerçekleştirilememiştir.";
+            else
+            {
+                accessor.HttpContext.Response.StatusCode = 401;
+                return "Yetkiniz olmadığı için işlem gerçekleştirilememiştir.";
+            }
         });
 
         return app;

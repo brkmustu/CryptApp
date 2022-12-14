@@ -1,6 +1,4 @@
-﻿using Core;
-
-namespace Caching.Distributed;
+﻿namespace Caching.Distributed;
 
 public static class CachingSettings
 {
@@ -9,6 +7,6 @@ public static class CachingSettings
         string value = withHttpPrefix ? "http://localhost" : "redis";
         value = withPort ? value + ":6379" : value;
         var environmentValue = Environment.GetEnvironmentVariable("CommonSettings__RedisServiceName");
-        return environmentValue.IsNullOrEmpty() ? value : environmentValue;
+        return string.IsNullOrEmpty(environmentValue) ? value : environmentValue;
     }
 }

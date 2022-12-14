@@ -6,7 +6,7 @@ services:
       - "9000:80"
       - "9090:8080"
 
-  web:
+  client.app:
     expose:
       - "8080"
 
@@ -14,14 +14,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - CommonSettings__RedisServiceName=redis:6379
+    env_file:
+      - ./env.files/token-options.env
     expose:
       - "80"
-      - "5000"
 
   middleware-jwt.val:
+    env_file:
+      - ./env.files/token-options.env
     expose:
       - "80"
-      - "5050"
 
   crypt.service:
     environment:
@@ -43,5 +45,17 @@ services:
     volumes:
         - vol_redis_data:/data
 
+  rabbitmq:
+    env_file:
+      - ./env.files/rabbitmq.env
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - vol_rabbitmq_data:/var/lib/rabbitmq
+        - vol_rabbitmq_log:/var/log/rabbitmq
+
 volumes:
+  vol_rabbitmq_data:
+  vol_rabbitmq_log:
   vol_redis_data:

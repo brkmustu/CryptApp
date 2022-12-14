@@ -8,7 +8,7 @@ namespace Core.Shared.Security;
 /// </summary>
 public static class HashingExtensions
 {
-    public static (byte[] PasswordSalt, byte[] PasswordHash) CreatePasswordHash(this string password)
+    public static (byte[] PasswordHash, byte[] PasswordSalt) CreatePasswordHash(this string password)
     {
         using (var hmac = new HMACSHA512())
         {

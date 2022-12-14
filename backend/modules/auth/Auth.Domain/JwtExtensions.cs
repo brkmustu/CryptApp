@@ -9,14 +9,13 @@ public static class JwtExtensions
 {
     public static TokenResult CreateToken(
           this ApplicationIdentifier app,
-          IEnumerable<string> permissions,
           TokenOptions tokenOptions
       )
     {
         var accessTokenExpiration = DateTime.Now.AddMinutes(tokenOptions.AccessTokenExpiration);
         var securityKey = CreateSecurityKey(tokenOptions.SecurityKey);
         var signingCredentials = CreateSigningCredentials(securityKey);
-        var jwt = CreateJwtSecurityToken(tokenOptions, app, signingCredentials, permissions, accessTokenExpiration);
+        var jwt = CreateJwtSecurityToken(tokenOptions, app, signingCredentials, accessTokenExpiration);
         var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         var token = jwtSecurityTokenHandler.WriteToken(jwt);
 
@@ -31,7 +30,6 @@ public static class JwtExtensions
             TokenOptions tokenOptions,
             ApplicationIdentifier app,
             SigningCredentials signingCredentials,
-            IEnumerable<string> permissions,
             DateTime accessTokenExpiration
         )
     {
@@ -40,19 +38,16 @@ public static class JwtExtensions
                 audience: tokenOptions.Audience,
                 expires: accessTokenExpiration,
                 notBefore: DateTime.Now,
-                claims: SetClaims(app, permissions),
+                claims: SetClaims(app),
                 signingCredentials: signingCredentials
         );
         return jwt;
     }
 
-    private static IEnumerable<Claim> SetClaims(ApplicationIdentifier app, IEnumerable<string> permissions)
+    private static IEnumerable<Claim> SetClaims(ApplicationIdentifier app)
     {
         var claims = new List<Claim>();
-        claims.AddName(app.Name);
-        claims.AddNameIdentifier(app.Id.ToString());
-        claims.AddRoles(permissions.ToArray());
-
+        claims.AddNameIdentifier(app.ApiKey);
         return claims;
     }
 

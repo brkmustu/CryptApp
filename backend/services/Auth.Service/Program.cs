@@ -10,7 +10,7 @@ builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
 });
 
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddAuthApp();
+builder.Services.AddAuthApp(builder.Configuration);
 
 var app = builder.Build();
 

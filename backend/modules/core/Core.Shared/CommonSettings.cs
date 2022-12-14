@@ -40,7 +40,7 @@ public static class CommonSettings
         return environmentValue.IsNullOrEmpty() ? value : environmentValue;
     }
 
-    public static RabbitMqOptions GetRabbitMqOptions(IConfiguration configuration)
+    public static RabbitMqOptions GetRabbitMqSettings(IConfiguration configuration)
     {
         var appSettingsSection = configuration.GetSection(RabbitMqOptions.SectionName);
         var options = appSettingsSection.Get<RabbitMqOptions>();
@@ -49,6 +49,7 @@ public static class CommonSettings
         var virtualHost = Environment.GetEnvironmentVariable("RabbitMqOptions__VirtualHost");
         var userName = Environment.GetEnvironmentVariable("RabbitMqOptions__UserName");
         var password = Environment.GetEnvironmentVariable("RabbitMqOptions__Password");
+        var queueName = Environment.GetEnvironmentVariable("RabbitMqOptions__QueueName");
 
         if (!hostName.IsNullOrEmpty())
         {
@@ -65,6 +66,10 @@ public static class CommonSettings
         if (!password.IsNullOrEmpty())
         {
             options.Password = password;
+        }
+        if (!queueName.IsNullOrEmpty())
+        {
+            options.QueueName = queueName;
         }
 
         return options;

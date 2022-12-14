@@ -45,15 +45,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "middlewares", "middlewares"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtValidation", "backend\middlewares\JwtValidation\JwtValidation.csproj", "{7DDAB56C-8295-4346-B818-A360E12BF0F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Domain", "backend\modules\auth\Auth.Domain\Auth.Domain.csproj", "{EF8A9942-D372-4CFE-91B9-FFEAD6CB4D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Domain", "backend\modules\auth\Auth.Domain\Auth.Domain.csproj", "{EF8A9942-D372-4CFE-91B9-FFEAD6CB4D14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "caching", "caching", "{C11F887B-396E-451A-93FC-CC9262872EC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.Distributed", "backend\modules\caching\Caching.Distributed\Caching.Distributed.csproj", "{F54CA9CA-9342-433F-8AA1-1D12FE5921CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caching.Distributed", "backend\modules\caching\Caching.Distributed\Caching.Distributed.csproj", "{F54CA9CA-9342-433F-8AA1-1D12FE5921CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypt.Domain.Shared", "backend\modules\crypt\Crypt.Domain.Shared\Crypt.Domain.Shared.csproj", "{64FB3564-83B2-4B3B-9197-7181556ADF29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypt.Domain.Shared", "backend\modules\crypt\Crypt.Domain.Shared\Crypt.Domain.Shared.csproj", "{64FB3564-83B2-4B3B-9197-7181556ADF29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Domain.Shared", "backend\modules\auth\Auth.Domain.Shared\Auth.Domain.Shared.csproj", "{15574117-0955-4E73-985D-37A9171FFB22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Domain.Shared", "backend\modules\auth\Auth.Domain.Shared\Auth.Domain.Shared.csproj", "{15574117-0955-4E73-985D-37A9171FFB22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env.files", "env.files", "{A324AA91-B00B-4C1F-9556-924E319630E3}"
+	ProjectSection(SolutionItems) = preProject
+		env.files\rabbitmq.env = env.files\rabbitmq.env
+		env.files\token-options.env = env.files\token-options.env
+		env.files\rabbitmq-options.env = env.files\rabbitmq-options.env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

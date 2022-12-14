@@ -1,4 +1,4 @@
-﻿namespace Core.Shared;
+﻿namespace Core.Shared.Caching;
 
 public static class CollectionNames
 {
