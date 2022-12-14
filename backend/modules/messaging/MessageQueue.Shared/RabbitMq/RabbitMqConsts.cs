@@ -1,4 +1,4 @@
-﻿namespace Core.Shared.RabbitMq;
+﻿namespace MessageQueue.Shared.RabbitMq;
 
 public class RabbitMqConsts
 {

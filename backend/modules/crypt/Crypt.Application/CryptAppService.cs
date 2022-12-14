@@ -5,6 +5,17 @@ namespace Crypt.Application;
 
 public class CryptAppService : ICryptAppService
 {
+
+    public Task<Result<CryptDto>> DecryptAsync(CryptDto context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Result<CryptDto>> EncryptAsync(CryptDto context)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<Result> SubscribeDecryptAsync(CryptDto context)
     {
         throw new NotImplementedException();

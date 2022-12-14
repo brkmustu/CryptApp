@@ -57,10 +57,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Domain.Shared", "backe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env.files", "env.files", "{A324AA91-B00B-4C1F-9556-924E319630E3}"
 	ProjectSection(SolutionItems) = preProject
+		env.files\rabbitmq-options.env = env.files\rabbitmq-options.env
 		env.files\rabbitmq.env = env.files\rabbitmq.env
 		env.files\token-options.env = env.files\token-options.env
-		env.files\rabbitmq-options.env = env.files\rabbitmq-options.env
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue", "backend\modules\messaging\MessageQueue\MessageQueue.csproj", "{39F0C21E-EC64-4694-A2A5-6908B388EE54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "messaging", "messaging", "{E66339AB-BD5E-40B2-8CD9-10B2F7278FCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Shared", "backend\modules\messaging\MessageQueue.Shared\MessageQueue.Shared.csproj", "{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +122,14 @@ Global
 		{15574117-0955-4E73-985D-37A9171FFB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15574117-0955-4E73-985D-37A9171FFB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15574117-0955-4E73-985D-37A9171FFB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F0C21E-EC64-4694-A2A5-6908B388EE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F0C21E-EC64-4694-A2A5-6908B388EE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F0C21E-EC64-4694-A2A5-6908B388EE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F0C21E-EC64-4694-A2A5-6908B388EE54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +153,9 @@ Global
 		{F54CA9CA-9342-433F-8AA1-1D12FE5921CC} = {C11F887B-396E-451A-93FC-CC9262872EC3}
 		{64FB3564-83B2-4B3B-9197-7181556ADF29} = {C4B6A849-7A7E-4F1E-96D6-4184B0554A54}
 		{15574117-0955-4E73-985D-37A9171FFB22} = {97D989B8-A7FD-4A10-8F20-D232197DC745}
+		{39F0C21E-EC64-4694-A2A5-6908B388EE54} = {E66339AB-BD5E-40B2-8CD9-10B2F7278FCF}
+		{E66339AB-BD5E-40B2-8CD9-10B2F7278FCF} = {6AB00DBA-43A5-4A9F-8803-E407488CC28C}
+		{8C1F5CD1-D312-4BA7-9497-7EE812DCAAEE} = {E66339AB-BD5E-40B2-8CD9-10B2F7278FCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {004A282E-3449-4E9D-B088-7649368FF50E}

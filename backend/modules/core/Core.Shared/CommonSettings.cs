@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Core.Shared.RabbitMq;
-
-namespace Core.Shared;
+﻿namespace Core.Shared;
 
 public static class CommonSettings
 {
@@ -40,38 +37,4 @@ public static class CommonSettings
         return environmentValue.IsNullOrEmpty() ? value : environmentValue;
     }
 
-    public static RabbitMqOptions GetRabbitMqSettings(IConfiguration configuration)
-    {
-        var appSettingsSection = configuration.GetSection(RabbitMqOptions.SectionName);
-        var options = appSettingsSection.Get<RabbitMqOptions>();
-
-        var hostName = Environment.GetEnvironmentVariable("RabbitMqOptions__HostName");
-        var virtualHost = Environment.GetEnvironmentVariable("RabbitMqOptions__VirtualHost");
-        var userName = Environment.GetEnvironmentVariable("RabbitMqOptions__UserName");
-        var password = Environment.GetEnvironmentVariable("RabbitMqOptions__Password");
-        var queueName = Environment.GetEnvironmentVariable("RabbitMqOptions__QueueName");
-
-        if (!hostName.IsNullOrEmpty())
-        {
-            options.HostName = hostName;
-        }
-        if (!virtualHost.IsNullOrEmpty())
-        {
-            options.VirtualHost = virtualHost;
-        }
-        if (!userName.IsNullOrEmpty())
-        {
-            options.UserName = userName;
-        }
-        if (!password.IsNullOrEmpty())
-        {
-            options.Password = password;
-        }
-        if (!queueName.IsNullOrEmpty())
-        {
-            options.QueueName = queueName;
-        }
-
-        return options;
-    }
 }
