@@ -1,21 +1,21 @@
 # CryptApp
 
-uygulama hala geliştirme aşamasında.
+uygulama hala geliÅŸtirme aÅŸamasÄ±nda.
 
-ancak traefik üzerinden temel fonksiyonlar yapılabiliyor.
+ancak traefik Ã¼zerinden temel fonksiyonlar yapÄ±labiliyor.
 
-- jwt validation middleware ile jwt kontrolü,
-- token almak için "http://localhost:9000/api/auth/signin" api'sini kullanabilirsiniz. Authentication servisi ilk ayağa kalkarken redis üzerinde varsayılan api'key ile "ApplicationIdenifier" kayıtlı değil ise ilk bu kaydı redise ekler. Aşağıdaki body ile token alabilirsiniz;
+- jwt validation middleware ile jwt kontrolÃ¼,
+- token almak iÃ§in "http://localhost:9000/api/auth/signin" api'sini kullanabilirsiniz. Authentication servisi ilk ayaÄŸa kalkarken redis Ã¼zerinde varsayÄ±lan api'key ile "ApplicationIdenifier" kayÄ±tlÄ± deÄŸil ise ilk bu kaydÄ± redise ekler. AÅŸaÄŸÄ±daki body ile token alabilirsiniz;
 ```json
 {
     "ApiKey": "00000000-0000-0000-1111-000000000000",
     "Password": "!38bad8_92f@T7"
 }
 ```
-- token valid ise "http://localhost:9000/api/crypt/encrypt" yada "http://localhost:9000/api/crypt/decrypt" api'leri kullanıma hazır, (jwt ile authentice değil ise 401 hatası verir)
-- vuejs client app yine traefik üzerinden çalışır vaziyette,
+- token valid ise "http://localhost:9000/api/crypt/encrypt" yada "http://localhost:9000/api/crypt/decrypt" api'leri kullanÄ±ma hazÄ±r, (jwt ile authentice deÄŸil ise 401 hatasÄ± verir)
+- vuejs client app yine traefik Ã¼zerinden Ã§alÄ±ÅŸÄ±r vaziyette,
 
-önemli not : sistem rabbitmq ile asenkron tasarlanmaktadır ve henüz api'lere cevap döndüğünü gösterebileceğimiz client uygulamamız tamamlanmadı.
-önemli not : bir diğer tamamlanması gereken konu ise signalr ile client'a api üzerinden gelen ve event processor ile işlenen request'in cevabının döndürülmesi konusunu henüz çözemedim.
+Ã¶nemli not : sistem rabbitmq ile asenkron tasarlanmaktadÄ±r ve henÃ¼z api'lere cevap dÃ¶ndÃ¼ÄŸÃ¼nÃ¼ gÃ¶sterebileceÄŸimiz client uygulamamÄ±z tamamlanmadÄ±.\
+Ã¶nemli not : bir diÄŸer tamamlanmasÄ± gereken konu ise signalr ile client'a api Ã¼zerinden gelen ve event processor ile iÅŸlenen request'in cevabÄ±nÄ±n dÃ¶ndÃ¼rÃ¼lmesi konusunu henÃ¼z Ã§Ã¶zemedim.
 
-şimdilik bu kadar :)
+ÅŸimdilik bu kadar :)
