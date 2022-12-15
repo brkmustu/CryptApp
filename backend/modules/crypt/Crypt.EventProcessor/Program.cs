@@ -18,6 +18,8 @@ var app = builder.Build();
 
 app.MapHub<CryptionHub>("/hubs/crypt");
 
-app.MapGet("/", () => "Hello world from crypt event processor!");
+app.MapGet("/events/crypt", () => "Hello world from crypt event processor!");
+
+app.UseRouting();
 
 app.Run();

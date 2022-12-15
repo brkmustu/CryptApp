@@ -3,7 +3,7 @@ import { HubConnectionBuilder, HttpTransportType } from "@microsoft/signalr";
 class cryptHub {
   constructor() {
     this.client = new HubConnectionBuilder()
-      .withUrl("http://gateway/hubs/crypt", {
+      .withUrl("http://crypt.eventprocessor:5000/hubs/crypt", {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets,
       })

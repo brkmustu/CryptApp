@@ -35,14 +35,23 @@ onMounted(() => {
       life: 3000,
     });
   });
-  cryptHub.start();
+  try {
+    cryptHub.start();
 
-  toast.add({
+    toast.add({
       severity: "success",
       summary: "Socket hazır!",
       detail: "back end ile socket bağlantısı kuruldu",
       life: 3000,
     });
+  } catch (error) {
+    toast.add({
+      severity: "error",
+      summary: "Socket hatası!",
+      detail: error,
+      life: 5000,
+    });
+  }
 });
 </script>
 

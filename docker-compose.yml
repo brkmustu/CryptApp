@@ -8,12 +8,15 @@ services:
     depends_on:
         - auth.service
         - crypt.service
+        - middleware-jwt.val
         - redis
 
   client.app:
     build:
       context: frontend
       dockerfile: Dockerfile
+    depends_on:
+        - gateway
 
   auth.service:
     image: ${DOCKER_REGISTRY-}authservice

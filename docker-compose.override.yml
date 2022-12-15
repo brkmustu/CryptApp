@@ -36,10 +36,11 @@ services:
   crypt.eventprocessor:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
     env_file:
       - ./env.files/rabbitmq-options.env
-    expose:
-      - "80"
+    ports:
+      - "5000:5000"
 
   redis:
     expose:
