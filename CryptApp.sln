@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "traefik", "traefik", "{97B3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{83EC76D6-6A9F-4A92-B8F6-021AF73352F1}"
 	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
 		up-re-create.ps1 = up-re-create.ps1
 	EndProjectSection
 EndProject
@@ -58,9 +59,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env.files", "env.files", "{
 		env.files\token-options.env = env.files\token-options.env
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "backend\modules\core\Messaging\Messaging.csproj", "{743C4326-21D1-4B2F-9AB3-C2ADB3E26B7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messaging", "backend\modules\core\Messaging\Messaging.csproj", "{743C4326-21D1-4B2F-9AB3-C2ADB3E26B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching", "backend\modules\core\Caching\Caching.csproj", "{B3A63C80-44F4-4CBE-99EE-53ED44728C6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caching", "backend\modules\core\Caching\Caching.csproj", "{B3A63C80-44F4-4CBE-99EE-53ED44728C6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
