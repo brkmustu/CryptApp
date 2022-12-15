@@ -11,6 +11,9 @@ http:
     client.app:
       rule: "PathPrefix(`/`)"
       service: client.app
+    crypt.eventprocessor:
+      rule: "PathPrefix(`/hubs/crypt`)"
+      service: client.app
   middlewares:
     middleware-jwt.val:
       forwardAuth:
@@ -28,3 +31,7 @@ http:
       loadBalancer:
         servers:
           - url: http://client.app
+    crypt.eventprocessor:
+      loadBalancer:
+        servers:
+          - url: http://crypt.eventprocessor

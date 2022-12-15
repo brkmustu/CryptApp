@@ -5,8 +5,6 @@ namespace Crypt.Application;
 
 public interface ICryptAppService
 {
-    Task<Result> SubscribeEncryptAsync(CryptDto context);
-    Task<Result> SubscribeDecryptAsync(CryptDto context);
     Task<Result<CryptDto>> EncryptAsync(CryptDto context);
     Task<Result<CryptDto>> DecryptAsync(CryptDto context);
 }

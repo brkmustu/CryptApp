@@ -52,6 +52,8 @@ public static class MessagingBootstrapper
             });
         }));
 
+        services.AddSingleton<IBus>(provider => provider.GetRequiredService<IBusControl>());
+
         // seçenekler boş geldiyse varsayılan değerler kullanılsın.
         if (massTransitHostOptions is null)
         {

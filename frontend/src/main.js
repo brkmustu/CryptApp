@@ -4,6 +4,7 @@ import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+import { getCryptHub } from './utils/cryptHub.js'
 
 import './assets/main.css'
 import 'primevue/resources/themes/saga-blue/theme.css';
@@ -16,5 +17,6 @@ app.use(ToastService);
 
 app.component('Button', Button);
 app.component('Toast', Toast);
+app.provide("getCryptHub", getCryptHub);
 
 app.mount('#app');

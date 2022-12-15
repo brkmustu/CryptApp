@@ -23,7 +23,7 @@ public class EncryptWorker : BackgroundService
         {
             _logger.LogInformation("EncryptWorker started");
 
-            var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint(RabbitMqConsts.Crypt_Encrypt_QueueName, x =>
+            var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint(RabbitMqOptions.Queues.Crypt.Encrypt, x =>
             {
                 x.Consumer<EncryptConsumer>(_serviceProvider);
             });

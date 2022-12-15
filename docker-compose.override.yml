@@ -28,12 +28,16 @@ services:
   crypt.service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    env_file:
+      - ./env.files/rabbitmq-options.env
     expose:
       - "80"
 
   crypt.eventprocessor:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    env_file:
+      - ./env.files/rabbitmq-options.env
     expose:
       - "80"
 

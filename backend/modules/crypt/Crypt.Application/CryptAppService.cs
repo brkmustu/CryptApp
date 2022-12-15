@@ -15,14 +15,4 @@ public class CryptAppService : ICryptAppService
     {
         throw new NotImplementedException();
     }
-
-    public Task<Result> SubscribeDecryptAsync(CryptDto context)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<Result> SubscribeEncryptAsync(CryptDto context)
-    {
-        throw new NotImplementedException();
-    }
 }
