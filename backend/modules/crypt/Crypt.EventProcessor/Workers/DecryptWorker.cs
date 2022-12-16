@@ -1,4 +1,4 @@
-using Core.Shared.RabbitMq;
+using Core.Shared.Messaging;
 using Crypt.EventProcessor.Consumers;
 using MassTransit;
 
@@ -15,7 +15,7 @@ public class DecryptWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint(RabbitMqOptions.Queues.Crypt.Decrypt, x =>
+        var hostReceiveEndpointHandler = _busControl.ConnectReceiveEndpoint(Queues.Crypt.Decrypt, x =>
         {
             x.Consumer<DecryptConsumer>(_serviceProvider);
         });

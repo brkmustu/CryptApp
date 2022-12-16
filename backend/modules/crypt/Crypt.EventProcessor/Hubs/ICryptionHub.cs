@@ -1,7 +1,8 @@
+using Core.Shared.Application;
 using Crypt.Application.Contracts;
 
 public interface ICryptionHub
 {
-    Task Encrypt(CryptDto dto);
-    Task Decrypt(CryptDto dto);
+    Task Encrypt(Result<CryptDto> dto);
+    Task Decrypt(Result<CryptDto> dto);
 }

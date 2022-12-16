@@ -16,10 +16,8 @@ builder.Host.ConfigureServices((hostContext, services) =>
 
 var app = builder.Build();
 
-app.MapHub<CryptionHub>("/hubs/crypt");
-
 app.MapGet("/events/crypt", () => "Hello world from crypt event processor!");
 
-app.UseRouting();
+app.MapHub<CryptionHub>("/hubs/crypt");
 
 app.Run();

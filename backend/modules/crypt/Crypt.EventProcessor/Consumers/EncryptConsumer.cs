@@ -1,4 +1,4 @@
-﻿using Core.Shared.Security;
+﻿using Crypt.Application;
 using Crypt.Application.Contracts;
 using Crypt.Events;
 using MassTransit;
@@ -10,21 +10,29 @@ public class EncryptConsumer : IConsumer<EncryptEvent>
 {
     private readonly ILogger<EncryptConsumer> _logger;
     private readonly IHubContext<CryptionHub, ICryptionHub> _hub;
+    private readonly ICryptAppService _service;
 
-    public EncryptConsumer(ILogger<EncryptConsumer> logger, IHubContext<CryptionHub, ICryptionHub> hub)
+    public EncryptConsumer(
+            ILogger<EncryptConsumer> logger,
+            IHubContext<CryptionHub, ICryptionHub> hub,
+            ICryptAppService service
+        )
     {
         _logger = logger;
         _hub = hub;
+        _service = service;
     }
 
     public async Task Consume(ConsumeContext<EncryptEvent> context)
     {
         try
         {
-            await _hub.Clients.All.Encrypt(new CryptDto
+            var result = await _service.EncryptAsync(new CryptDto
             {
-                Context = SimpleStringCipher.Instance.Encrypt(context.Message.Context)
+                Context = context.Message.Context
             });
+
+            await _hub.Clients.All.Encrypt(result);
         }
         catch (Exception ex)
         {

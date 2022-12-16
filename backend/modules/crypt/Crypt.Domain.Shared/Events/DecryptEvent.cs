@@ -1,6 +1,8 @@
-﻿namespace Crypt.Events;
+﻿using Core.Shared.Messaging;
 
-public class DecryptEvent
+namespace Crypt.Events;
+
+public class DecryptEvent : BaseEvent
 {
     public string Context { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿using Core.Shared.RabbitMq;
+﻿using Core.Shared.Messaging;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
