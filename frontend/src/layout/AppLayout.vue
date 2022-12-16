@@ -1,18 +1,26 @@
 <script setup>
-import AppTopbar from "./AppTopbar.vue";
 import AppFooter from "./AppFooter.vue";
+import AppTopbar from "./AppTopbar.vue";
 </script>
 
 <template>
-  <div class="layout-wrapper layout-theme-dark">
-    <app-topbar></app-topbar>
-    <div class="layout-main-container">
-      <div class="layout-main">
-        <router-view></router-view>
+  <div className="grid">
+    <div className="col-8 col-offset-2">
+      <div className="card">
+        <div class="flex flex-column card-container">
+          <app-topbar
+            class="flex align-items-center justify-content-center"
+          ></app-topbar>
+          <div class="mt-8 flex align-items-center justify-content-center">
+            <router-view></router-view>
+          </div>
+          <app-footer
+            class="absolute bottom-0 flex align-items-center justify-content-center"
+            style="left: 45%"
+          ></app-footer>
+        </div>
       </div>
-      <app-footer></app-footer>
     </div>
-    <div class="layout-mask"></div>
   </div>
 </template>
 

@@ -1,46 +1,121 @@
 <script setup>
-import { ref, inject } from "vue";
+import { ref, inject, onMounted } from "vue";
+import { useToast } from "primevue/usetoast";
 const getCryptHub = inject("getCryptHub");
 const cryptHub = getCryptHub();
 
+const appAxios = inject("appAxios");
+const toast = useToast();
 const context = ref("");
-const value = ref("");
+const result = ref("");
+
+onMounted(() => {
+  cryptHub.client.on("Encrypt", function (input) {
+    result.value = input.data.context;
+
+    toast.add({
+      severity: "success",
+      summary: "Şifrelenmiş data!",
+      detail: input.data.context,
+      life: 3000,
+    });
+  });
+  cryptHub.client.on("Decrypt", function (input) {
+    result.value = input.data.context;
+    toast.add({
+      severity: "success",
+      summary: "Çözümlenmiş data!",
+      detail: input.data.context,
+      life: 3000,
+    });
+  });
+  cryptHub.start();
+});
+
+const encrypt = function () {
+  appAxios
+    .post("crypt/encrypt", {
+      context: context.value,
+    })
+    .then((response) => {
+      toast.add({
+        severity: "success",
+        summary: "İşlem başarılı!",
+        detail: response,
+        life: 3000,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      toast.add({
+        severity: "error",
+        summary: "Hata!",
+        detail: "Şifreleme işlemi esnasında bir hata oluştu!",
+        life: 3000,
+      });
+    });
+};
+
+const decrypt = function () {
+  appAxios
+    .post("crypt/decrypt", {
+      context: context.value,
+    })
+    .then((response) => {
+      toast.add({
+        severity: "success",
+        summary: "İşlem başarılı!",
+        detail: response,
+        life: 3000,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      toast.add({
+        severity: "error",
+        summary: "Hata!",
+        detail: "Şifre çözme işlemi esnasında bir hata oluştu!",
+        life: 3000,
+      });
+    });
+};
 </script>
 <template>
-  <div class="grid">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <Card>
-        <template #header>
-          <img alt="user header" src="/images/usercard.png" />
-        </template>
-        <template #title> Şifreleme / Şifre Çözme </template>
-        <template #content>
-          <div class="grid p-fluid">
-            <div class="col-2"></div>
-            <div class="col-3">
-              <div class="p-inputgroup">
-                <Button label="Search" />
-                <InputText v-model="context" placeholder="İçerik" />
-              </div>
-            </div>
-            <div class="col-3">
-              <InputText v-model="context" placeholder="Sonuç" />
-            </div>
-            <div class="col-2"></div>
+  <Card>
+    <template #title> Şifreleme / Şifre Çözme </template>
+    <template #content>
+      <div class="card">
+        <div class="formgrid grid">
+          <div class="field col">
+            <label for="context">İçerik</label>
+            <Textarea
+              v-model="context"
+              rows="3"
+              cols="100"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
           </div>
-        </template>
-        <template #footer>
-          <Button icon="pi pi-check" label="Save" />
-          <Button
-            icon="pi pi-times"
-            label="Cancel"
-            class="p-button-secondary"
-            style="margin-left: 0.5em"
-          />
-        </template>
-      </Card>
-    </div>
-    <div class="col-2"></div>
-  </div>
+          <div class="field col">
+            <label for="result">Sonuç</label>
+            <Textarea
+              v-model="result"
+              rows="3"
+              cols="100"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <Button icon="pi pi-send" label="Şifrele" @click="encrypt" />
+      <Button
+        icon="pi pi-refresh"
+        label="Şifreli Metni Çöz"
+        class="p-button-warning"
+        style="margin-left: 0.5em"
+        @click="decrypt"
+      />
+    </template>
+  </Card>
 </template>
