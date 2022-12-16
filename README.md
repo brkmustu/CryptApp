@@ -65,8 +65,13 @@ Authentication sürecini anlatan diyagramımız;
 
 Aslında en temel ihtiyaç "soyutlama" ve "esneklik" olsada her şirketin kendi dinamikleri farklıdır. Eğer saniye başına aldığınız istek adedi artık baş ağrıtmaya başladıysa başka bir sebep olabilir. Deployment süreçlerinde takımların kendi başına hareket edebilmesini sağlamak yine mikroservisle birlikte event driven mimaride ön plana çıkan bir diğer husus. Ancak uygulama büyüdükçe, uygulamada karşılaşılan problemleri farklı programlama dilleri ile çözmek konusu yine yazılımcıları gıdıklayan başka bir husustur :).
 
-Tabi event driven mimarinin önde gelen konusu olan asenkron programlama ile ilgili detaylı bir bilgi almak isterseniz Tarık Güney'in konuyu gündelik yaşamdan anlattığı şu makale şimdiye kadar karşılaştığım en güzel anlatım şekliydi. Temelde anlatılan konu requestlerin birbirilerini bloklamamasıdır. Detayları için makaleye bakabilirsiniz.
+Tabi event driven mimarinin önde gelen konusu olan asenkron programlama ile ilgili detaylı bir bilgi almak isterseniz Tarık Güney'in konuyu gündelik yaşamdan anlattığı [şu makale](https://atarikguney.medium.com/asenkron-asynchronous-programlama-nedir-296230121f9d "Asenkron programlamanın mantığını aktarması adına gördüğüm en güzel makale") şimdiye kadar karşılaştığım en güzel anlatım şekliydi.
 
-`https://atarikguney.medium.com/asenkron-asynchronous-programlama-nedir-296230121f9d`
+Temelde anlatılan konu uzun sürecek olan işlemlerin birbirilerini bloklamamasıdır. Ancak yinede kısa bir özet geçelim, klasik programlama yönteminde, request sunucuya geldiğinde sunucu o request'e karşılık gelen ilgili api fonksiyonunu tetikler ve uygulama server'da o fonksiyonun altında bir dizi işlemler gerçekleştirir. Bunlar arasında birbiri ile alakası olmayan ve paralelde yürütülebilecek olan işlemler olmasına rağmen siz uygulamayı buna uygun geliştirmezseniz uygulama bu şekilde hareket etmez. Birbiri ile ilişkişi olmayan işlemler birbirini beklemeye başlar.
+
+İşte tam bu yüzden asenkron programlamaya ihtiyacımız var. Burada bunu bir mimari yaklaşım olarak ortaya koyan yaklaşımda Event Driven mimaridir. Bu mimari ile sadece fonksiyonun asenkron çalışmasını ve bunu fonksiyon bazlı değil, komple süreç bazlı yapmaya olanak verir.
+
+Yukarıdaki uygulamamızda gerçekleştirdiğimiz örnekte tam olarak aslında bunu yapmakta. Crypt Rest API servisine gelen request'ler bir kuyruğa atılır ve bu kuyruğu dinleyen bir event processor
+
 
 
