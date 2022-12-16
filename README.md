@@ -62,3 +62,11 @@ Authentication sürecini anlatan diyagramımız;
 ## Büyük Resim :)
 
 Şimdiye kadar ne geliştirdiğimizi ve nasıl kullanılabileceğini aktardık. Fakat asıl önemli kısım işin mantığını anlatılması en önemli noktalardandır. O halde biz niye böyle karmaşıklığı yüksek mimarilere ihtiyaç duyuyoruz?
+
+Aslında en temel ihtiyaç "soyutlama" ve "esneklik" olsada her şirketin kendi dinamikleri farklıdır. Eğer saniye başına aldığınız istek adedi artık baş ağrıtmaya başladıysa başka bir sebep olabilir. Deployment süreçlerinde takımların kendi başına hareket edebilmesini sağlamak yine mikroservisle birlikte event driven mimaride ön plana çıkan bir diğer husus. Ancak uygulama büyüdükçe, uygulamada karşılaşılan problemleri farklı programlama dilleri ile çözmek konusu yine yazılımcıları gıdıklayan başka bir husustur :).
+
+Tabi event driven mimarinin önde gelen konusu olan asenkron programlama ile ilgili detaylı bir bilgi almak isterseniz Tarık Güney'in konuyu gündelik yaşamdan anlattığı şu makale şimdiye kadar karşılaştığım en güzel anlatım şekliydi. Temelde anlatılan konu requestlerin birbirilerini bloklamamasıdır. Detayları için makaleye bakabilirsiniz.
+
+`https://atarikguney.medium.com/asenkron-asynchronous-programlama-nedir-296230121f9d`
+
+
