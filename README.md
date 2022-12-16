@@ -36,7 +36,7 @@ Token almak için > "http://localhost:9000/api/auth/signin"
 
 Authentication sürecini anlatan diyagramımız;
 
-![Jwt Authentication Sürecimiz!](https://github.com/brkmustu/CryptApp/tree/main/docs/jwt-auth-sureci.png "Jwt Authentication Sürecimiz")
+![Jwt Authentication Sürecimiz!](https://github.com/brkmustu/CryptApp/blob/main/docs/jwt-auth-sureci.png "Jwt Authentication Sürecimiz")
 
 
 Şifreleme için > "http://localhost:9000/api/crypt/encrypt"
@@ -57,7 +57,7 @@ Authentication sürecini anlatan diyagramımız;
 
 Şifreleme uygulamasının sürecini anlatan diyagramımız;
 
-![Crypt Service Sürecimiz!](https://github.com/brkmustu/CryptApp/tree/main/docs/crypt-service-sureci.png "Crypt Service Sürecimiz")
+![Crypt Service Sürecimiz!](https://github.com/brkmustu/CryptApp/blob/main/docs/crypt-service-sureci.png "Crypt Service Sürecimiz")
 
 ## Büyük Resim :)
 
