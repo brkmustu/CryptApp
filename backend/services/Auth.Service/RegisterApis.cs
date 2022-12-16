@@ -18,8 +18,8 @@ public static class RegisterApis
 
                 authAppService.RegisterAsync(new RegisterRequestDto
                 {
-                    ApiKey = "00000000-0000-0000-1111-000000000000",
-                    Password = "!38bad8_92f@T7",
+                    ApiKey = "UdqoDma93upHRNm2rn0u",
+                    Password = "123456",
                 });
             }
         });

@@ -8,8 +8,8 @@ ancak traefik üzerinden temel fonksiyonlar yapılabiliyor.
 - token almak için "http://localhost:9000/api/auth/signin" api'sini kullanabilirsiniz. Authentication servisi ilk ayağa kalkarken redis üzerinde varsayılan api'key ile "ApplicationIdenifier" kayıtlı değil ise ilk bu kaydı redise ekler. Aşağıdaki body ile token alabilirsiniz;
 ```json
 {
-    "ApiKey": "00000000-0000-0000-1111-000000000000",
-    "Password": "!38bad8_92f@T7"
+    "ApiKey": "UdqoDma93upHRNm2rn0u",
+    "Password": "123456"
 }
 ```
 - token valid ise "http://localhost:9000/api/crypt/encrypt" yada "http://localhost:9000/api/crypt/decrypt" api'leri kullanıma hazır, (jwt ile authentice değil ise 401 hatası verir)
