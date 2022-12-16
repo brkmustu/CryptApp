@@ -14,10 +14,10 @@ import Textarea from "primevue/textarea";
 import { getCryptHub } from "./hubs/crypt.js";
 import { appAxios } from "./utils/appAxios.js";
 
+import "primevue/resources/themes/saga-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeflex/primeflex.scss";
 import "primeicons/primeicons.css";
-import "./assets/styles.css";
 
 const app = createApp(App);
 app.use(router);
