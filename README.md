@@ -24,7 +24,7 @@ Git repository'i indirip docker üzerinden uygulamayı ayağa kaldırdıktan son
 
 Eğer postman gibi bir rest api test aracı yardımıyla api'leri test etmek isterseniz aşağıdaki adresleri kullanabilirsiniz.
 
-Token almak için > "http://localhost:9000/api/auth/signin"
+Token almak için url > "http://localhost:9000/api/auth/signin"
 Örnek request body;
 
 ```json
@@ -39,7 +39,7 @@ Authentication sürecini anlatan diyagramımız;
 ![Jwt Authentication Sürecimiz!](https://github.com/brkmustu/CryptApp/blob/main/docs/jwt-auth-sureci.png "Jwt Authentication Sürecimiz")
 
 
-Şifreleme için > "http://localhost:9000/api/crypt/encrypt"
+Şifreleme için url > "http://localhost:9000/api/crypt/encrypt"
 
 ```json
 {
@@ -47,7 +47,7 @@ Authentication sürecini anlatan diyagramımız;
 }
 ```
 
-Şifrelenmiş metini çözmek için > "http://localhost:9000/api/crypt/decrypt"
+Şifrelenmiş metini çözmek için url > "http://localhost:9000/api/crypt/decrypt"
 
 ```json
 {
@@ -63,15 +63,31 @@ Authentication sürecini anlatan diyagramımız;
 
 Şimdiye kadar ne geliştirdiğimizi ve nasıl kullanılabileceğini aktardık. Fakat asıl önemli kısım işin mantığını anlatılması en önemli noktalardandır. O halde biz niye böyle karmaşıklığı yüksek mimarilere ihtiyaç duyuyoruz?
 
-Aslında en temel ihtiyaç "soyutlama" ve "esneklik" olsada her şirketin kendi dinamikleri farklıdır. Eğer saniye başına aldığınız istek adedi artık baş ağrıtmaya başladıysa başka bir sebep olabilir. Deployment süreçlerinde takımların kendi başına hareket edebilmesini sağlamak yine mikroservisle birlikte event driven mimaride ön plana çıkan bir diğer husus. Ancak uygulama büyüdükçe, uygulamada karşılaşılan problemleri farklı programlama dilleri ile çözmek konusu yine yazılımcıları gıdıklayan başka bir husustur :).
+Aslında en temel ihtiyaç "soyutlama" ve "esneklik" olsada her şirketin kendi dinamikleri farklıdır. Eğer saniye başına aldığınız istek adedi artık baş ağrıtmaya başladıysa başka bir sebep olabilir. Deployment süreçlerinde takımların kendi başına hareket edebilmesini sağlamak yine dağıtık mimarilerde ön plana çıkan bir diğer husus. Ancak uygulama büyüdükçe, uygulamada karşılaşılan problemleri farklı programlama dilleri ile çözmenize imkan sağlamasıda yine yazılımcıları gıdıklayan başka bir husustur :).
+
+Bu mimarinin avantaj ve dezavantajlarınıda kısaca özetlemek gerekirse;
+
+Avantajlar;
+
+- Ölçeklenebilir,
+- Dağıtık Çalışabilir,
+- Yüksek performanslı,
+- Çevik,
+- Her bir parçanın ayrı ayrı yüklenebilmesi,
+- bileşenlerin sadece kendi mantıklarını bilmesi ve buna göre test yapılması açısından oldukça güzel bir mimari stildir. Bundan dolayı zaten dağıtık yapılarda sıkça tercih edilir.
+
+Dezavantajlarına gelirsek;
+ - Consistency(tutarlılık),
+ - Atomicity (atomik),
+ - Sistemin takip edilebilirliği, bir hata oluştuğunda yapılan işlemlerin geri alınması,
+ - Tüm sistemin testi
+
+gibi ana başlıklar bu stilin zorluklarıdır diyebiliriz. Mimarinin daha detaylı analizi için Onur Dayıbaşının [şuradaki makalesini](https://medium.com/architectural-patterns/event-driven-architecture-7d0a7fb57db8 "Event driven mimari için güzel bir türkçe içerik.") incelemenizi tavsiye ederim.
 
 Tabi event driven mimarinin önde gelen konusu olan asenkron programlama ile ilgili detaylı bir bilgi almak isterseniz Tarık Güney'in konuyu gündelik yaşamdan anlattığı [şu makale](https://atarikguney.medium.com/asenkron-asynchronous-programlama-nedir-296230121f9d "Asenkron programlamanın mantığını aktarması adına gördüğüm en güzel makale") şimdiye kadar karşılaştığım en güzel anlatım şekliydi.
 
 Temelde anlatılan konu uzun sürecek olan işlemlerin birbirilerini bloklamamasıdır. Ancak yinede kısa bir özet geçelim, klasik programlama yönteminde, request sunucuya geldiğinde sunucu o request'e karşılık gelen ilgili api fonksiyonunu tetikler ve uygulama server'da o fonksiyonun altında bir dizi işlemler gerçekleştirir. Bunlar arasında birbiri ile alakası olmayan ve paralelde yürütülebilecek olan işlemler olmasına rağmen siz uygulamayı buna uygun geliştirmezseniz uygulama bu şekilde hareket etmez. Birbiri ile ilişkişi olmayan işlemler birbirini beklemeye başlar.
 
-İşte tam bu yüzden asenkron programlamaya ihtiyacımız var. Burada bunu bir mimari yaklaşım olarak ortaya koyan yaklaşımda Event Driven mimaridir. Bu mimari ile sadece fonksiyonun asenkron çalışmasını ve bunu fonksiyon bazlı değil, komple süreç bazlı yapmaya olanak verir.
+İşte tam bu yüzden asenkron programlamaya ihtiyacımız var. Burada bunu uygulama geliştirme metodolojisi olarak ortaya koyan yaklaşımda Event Driven mimaridir. Bu mimari ile sadece fonksiyonun asenkron çalışmasını ve bunu fonksiyon bazlı değil, komple süreç bazlı yapmaya olanak verir. Peki bu ne demek? Aslında "nodejs" varsayılan olarak asenkron bir yapıda çalışıyor. Ancak bir programlama dilinin asenkron yapıda çalışması ile komple sistemin dağıtık bir mimaride asenkron çalışmasını sağlamak aynı şeyler değil. Bu kısımda monolith mimari ile dağıtık mimarilerin ayrıldığı nokta ölçeklendirilebilir yapılar sunması. Darboğaza giren bir servisinizin olduğunu düşünün. Bilinen ve her yerde anlatıldığı üzere, monolith bir mimaride uygulamanın daha fazla request karşılayabilmesini sağlamanın iki farklı yolu var. Dikey ve yatay ölçeklendirme. İşte tam bu kısımda da [şuradaki makaleyi](https://barisvelioglu.net/veritabanlar%C4%B1n%C4%B1n-evrimi-nosql-veritabanlar%C4%B1-neden-i%CC%87cat-edildi-sebebi-neydi-ki-7de176ed4486 "Ölçeklendirme konusunda detaylı bir kaynak") şiddetle tavsiye ediyorum.
 
-Yukarıdaki uygulamamızda gerçekleştirdiğimiz örnekte tam olarak aslında bunu yapmakta. Crypt Rest API servisine gelen request'ler bir kuyruğa atılır ve bu kuyruğu dinleyen bir event processor
-
-
-
+Yukarıdaki uygulamamızda gerçekleştirdiğimiz örnekte ise bir message broker olan RabbitMq yardımıyla bu gerçekleştiriliyor. Crypt Rest API servisine gelen request'ler bir kuyruğa atılır ve bu kuyruğu dinleyen bir message broker sistemi kuyruktaki event'leri alıp işleyerek süreci tamamlayabilir, başka bir event tetikleyebilir yada işlem sonucu direkt client uygulama ile haberleşmesi gerekiyorsa günümüzde çokça kullanılan yollardan birisi olan websocket aracılığıyla işlem sonucunu client'a bildirebilir.
