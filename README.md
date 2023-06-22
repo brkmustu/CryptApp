@@ -16,6 +16,7 @@ Uygulamada aşağıdaki teknolojiler kullanışmıştır;
 - rest api servisleri asp.net 6 ile geliştirilmiştir.
 - jwt validasyon için "traefik"'in "middleware" yapısından faydalanılmıştır ve sırf jwt token validasyonunu gerçekleştirmesi için ayrı bir api servisi geliştirilmiştir.
 - dağıtık cache mimarisi için "redis" kullanılmıştır.
+- back-end tarafında işlem tamamlanınca cevabın real-time olarak geri döndürülmesi için "signalr" kullanılmıştır.
 
 Git repository'i indirip docker üzerinden uygulamayı ayağa kaldırdıktan sonra "http://localhost:9000" üzerinden client uygulamasına erişebilirsiniz. Uygulama ilk ayağa kalkarken bir defaya mahsus redis'e aşağıdaki bilgileri otomatik kaydetmektedir
 
