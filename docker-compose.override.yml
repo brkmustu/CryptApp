@@ -4,7 +4,7 @@ services:
   gateway:
     ports:
       - "9000:80"
-      - "9090:8080"
+      - "9091:8080"
 
   client.app:
     expose:
