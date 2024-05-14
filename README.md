@@ -13,7 +13,7 @@ Uygulamada aşağıdaki teknolojiler kullanışmıştır;
 
 - apigateway olarak "traefik" kullanılmıştır.
 - client uygulama "vuejs" ile geliştirilmiştir.
-- rest api servisleri asp.net 6 ile geliştirilmiştir.
+- rest api servisleri asp.net 6 ile geliştirilmiştir. (not: .net 8 migration gerçekleştirilmiştir)
 - jwt validasyon için "traefik"'in "middleware" yapısından faydalanılmıştır ve sırf jwt token validasyonunu gerçekleştirmesi için ayrı bir api servisi geliştirilmiştir.
 - dağıtık cache mimarisi için "redis" kullanılmıştır.
 - back-end tarafında işlem tamamlanınca cevabın real-time olarak geri döndürülmesi için "signalr" kullanılmıştır.
