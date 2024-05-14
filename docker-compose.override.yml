@@ -13,6 +13,7 @@ services:
   auth.service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=80
       - CommonSettings__RedisServiceName=redis:6379
     env_file:
       - ./env.files/token-options.env
@@ -20,6 +21,9 @@ services:
       - "80"
 
   middleware-jwt.val:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=80
     env_file:
       - ./env.files/token-options.env
     expose:
@@ -28,6 +32,7 @@ services:
   crypt.service:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=80
     env_file:
       - ./env.files/rabbitmq-options.env
     expose:
